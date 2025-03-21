@@ -8,17 +8,17 @@ namespace Modelo.Entities
 {
     public class ProductosEntity
     {
-        public int IdProducto { get; set; }
+        public int idproducto { get; set; }
 
-        public string NombreProducto { get; set; }
+        public string nombre_producto { get; set; }
 
-        public string DescripcionProducto {  get; set; }
+        public string descripcion {  get; set; }
 
-        public int PrecioProducto { get; set; }
+        public int precio_producto { get; set; }
 
-        public int CantidadProducto {  get; set; }
+        public int cantidad_producto {  get; set; }
 
-        public string TipoProducto {  get; set; }
+        public string tipo_producto {  get; set; }
 
 
     }

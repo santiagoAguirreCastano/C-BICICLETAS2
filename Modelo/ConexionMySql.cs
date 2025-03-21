@@ -4,34 +4,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Security;
 
+public class ConexionMySql
+{
 
-    public class ConexionMySql
+    public MySqlConnection connection;
+
+    private string cadenaConexion;
+    public ConexionMySql()
     {
 
-        public MySqlConnection Connection;
+        cadenaConexion = "Database=tiendabicis;Datasource=localhost;User Id=root;Password=";
+        connection = new MySqlConnection(cadenaConexion);
 
-        private String cadenaConexion;
-        public ConexionMySql()
-        {
-
-            cadenaConexion = "Database=tiendabicis; Datasource=localhost; User Id=root;Password=";
-        }
-
-        public MySqlConnection GetConnection()
-        {
-            try
-            {
-                if (Connection.State != System.Data.ConnectionState.Open)
-                {
-                    Connection.Open();
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            return Connection;
-        }
     }
+
+    public MySqlConnection GetConnection()
+    {
+        try
+        {
+            if (connection.State != System.Data.ConnectionState.Open)
+            {
+                connection.Open();
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+        return connection;
+    }
+}
 
