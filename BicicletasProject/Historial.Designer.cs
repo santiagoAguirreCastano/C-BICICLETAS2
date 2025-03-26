@@ -1,6 +1,6 @@
 ﻿namespace Principal
 {
-    partial class Formulario
+    partial class Historial
     {
         /// <summary>
         /// Required designer variable.

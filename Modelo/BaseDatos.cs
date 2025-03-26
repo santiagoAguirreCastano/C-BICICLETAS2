@@ -14,7 +14,7 @@ namespace Modelo
         {
             List<ProductosEntity> productos = new List<ProductosEntity>();
             MySqlCommand cmd = GetConnection().CreateCommand();
-            cmd.CommandText = "SELECT * FROM producto";
+            cmd.CommandText = "call EnviarProductos()";
              MySqlDataReader dr=cmd.ExecuteReader();
 
             while (dr.Read())
@@ -39,7 +39,7 @@ namespace Modelo
         {
             int resultado = 0;
             MySqlCommand cmd = GetConnection().CreateCommand();
-            cmd.CommandText = "INSERT INTO producto (nombre_producto,descripcion,precio_producto,cantidad_producto,tipo_producto) VALUES ('"+Name+"','"+Description+"',"+Precio+","+Cantidad+",'"+Tipo+"')";
+            cmd.CommandText = "call GuardarProductos()";
             resultado=cmd.ExecuteNonQuery();
             return resultado;
         }

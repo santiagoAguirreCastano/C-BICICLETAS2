@@ -11,9 +11,9 @@ using Logica;
 
 namespace Principal
 {
-    public partial class Formulario : Form
+    public partial class Historial : Form
     {
-        public Formulario()
+        public Historial()
         {
             InitializeComponent();
         }
