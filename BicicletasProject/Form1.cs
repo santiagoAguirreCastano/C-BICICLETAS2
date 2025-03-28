@@ -21,6 +21,7 @@ namespace Principal
         {
             Inventario inventario = new Inventario();
             inventario.Show();
+            
 
         }
 

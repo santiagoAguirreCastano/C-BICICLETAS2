@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Modelo.Entities;
@@ -39,9 +40,37 @@ namespace Modelo
         {
             int resultado = 0;
             MySqlCommand cmd = GetConnection().CreateCommand();
-            cmd.CommandText = "call GuardarProductos()";
+            cmd.CommandText = "call GuardarProductos('"+Name+"','"+Description+ "','"+Description+ "','"+Precio+ "','"+Cantidad+ "','"+Tipo+"')";
             resultado=cmd.ExecuteNonQuery();
             return resultado;
+        }
+
+        public List<VendedorEntity> ObtenerVendedores()
+        {
+            List<VendedorEntity> Vendedor = new List<VendedorEntity>();
+            MySqlCommand cmd = GetConnection().CreateCommand();
+
+            cmd.CommandText = "SELECT * FROM vendedor"; 
+
+            MySqlDataReader rd = cmd.ExecuteReader();
+
+                while (rd.Read())
+                {
+                    VendedorEntity vendedorEntity = new VendedorEntity();
+
+                        vendedorEntity.idVendedor = rd.GetInt32(0);
+                        vendedorEntity.nombreVendedor = rd.GetString(1);
+                        vendedorEntity.correoVendedor = rd.GetString(2);
+                        vendedorEntity.comision = rd.GetInt32(3);
+                        vendedorEntity.telefonoVendedor = rd.GetInt32(4);
+
+
+
+                    Vendedor.Add(vendedorEntity);
+                }
+            
+
+            return Vendedor;
         }
     }
 }
